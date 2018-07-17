@@ -1,0 +1,18 @@
+[I 16:56:11.768 NotebookApp] JupyterLab alpha preview extension loaded from /home/ksj/anaconda3/lib/python3.6/site-packages/jupyterlab
+JupyterLab v0.27.0
+Known labextensions:
+[I 16:56:11.770 NotebookApp] Running the core application with no additional extensions or settings
+[I 16:56:11.772 NotebookApp] Serving notebooks from local directory: /home/ksj/projects/filters
+[I 16:56:11.772 NotebookApp] 0 active kernels 
+[I 16:56:11.772 NotebookApp] The Jupyter Notebook is running at: http://localhost:8888/?token=0e30057663273345f02b3cd4de20ecf11a0ce23120672688
+[I 16:56:11.772 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[C 16:56:11.772 NotebookApp] 
+    
+    Copy/paste this URL into your browser when you connect for the first time,
+    to login with a token:
+        http://localhost:8888/?token=0e30057663273345f02b3cd4de20ecf11a0ce23120672688
+[I 16:56:12.107 NotebookApp] Accepting one-time-token-authenticated connection from 127.0.0.1
+기존 브라우저 세션에 새 창을 생성했습니다.
+[W 16:56:13.144 NotebookApp] 404 GET /api/kernels/2966c808-69a6-4b19-b2ea-701e0d30283d/channels?session_id=59CBEDA5ED894EA796DF7BE56A8FF35B (127.0.0.1): Kernel does not exist: 2966c808-69a6-4b19-b2ea-701e0d30283d
+[W 16:56:13.154 NotebookApp] 404 GET /api/kernels/2966c808-69a6-4b19-b2ea-701e0d30283d/channels?session_id=59CBEDA5ED894EA796DF7BE56A8FF35B (127.0.0.1) 45.58ms referer=None
+[W 16:56:46.117 NotebookApp] Replacing stale connection: 2966c808-69a6-4b19-b2ea-701e0d30283d:59CBEDA5ED894EA796DF7BE56A8FF35B
