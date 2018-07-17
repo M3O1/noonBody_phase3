@@ -44,3 +44,26 @@ def create_vignette_mask(height, width, Xside, Xcenter, Yside, Ycenter):
 
     vignette_mask = (vertical*horizontal) # 두 방향으로의 가중치 곱의 Transpose
     return np.expand_dims(vignette_mask,axis=-1)
+
+def textureEffect(image, texture, strength=0.5):
+    """ 이미지에 질감 효과를 덧입힘
+
+    Keyword arguments:
+    texture  -- 적용할 texture 이미지
+    strength -- texture 효과의 정도
+
+    """
+    if len(texture.shape) == 3:
+        texture = cv2.cvtColor(texture, cv2.COLOR_RGB2GRAY)
+
+    texture = cv2.resize(texture,image.shape[:2])
+    rgb, alpha = image[:,:,:3], image[:,:,3:]
+
+    blank = np.zeros_like(texture, dtype=np.float)
+    normed = cv2.normalize(texture, blank,
+                           0.,1.,norm_type=cv2.NORM_MINMAX, dtype=cv2.CV_32F)
+    weights = (1 - strength) + 2 * strength * normed
+    applied = np.clip(rgb * np.expand_dims(weights,-1),0,250).astype('uint8')
+
+    result = np.concatenate([applied,alpha],axis=-1)
+    return result

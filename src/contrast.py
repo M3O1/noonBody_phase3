@@ -28,7 +28,7 @@ def claheContrast(image, clipLimit=2., tileGridSize=11):
     result = np.concatenate([applied, alpha],axis=-1)
     return result
 
-def sharpening(image, sharpeness=0.3, ksize=11):
+def sharpening(image, sharpness=0.3, ksize=11):
     """ 이미지의 경계선을 부각시킴
 
     이미지를 Blurry하게 만든 것과 원래 이미지를 빼줌으로서,
@@ -41,7 +41,7 @@ def sharpening(image, sharpeness=0.3, ksize=11):
     rgb, alpha = image[:,:,:3], image[:,:,3:]
 
     blurred = cv2.GaussianBlur(rgb, (ksize,ksize), 0)
-    applied = cv2.addWeighted(rgb, 1+sharpeness, blurred, -sharpeness,0)
+    applied = cv2.addWeighted(rgb, 1+sharpness, blurred, -sharpness,0)
 
     result = np.concatenate([applied, alpha],axis=-1)
     return result
