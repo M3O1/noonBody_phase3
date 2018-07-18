@@ -1,5 +1,18 @@
 import numpy as np
 import cv2
+from image_utils import merge_images
+
+def merge_background(image, mask, background):
+    """ 이미지에 배경 이미지를 합침
+
+    Keyword arguments:
+    background : 배경 이미지, width, Channel수는 image와 동일해야 함
+    """
+    height, width = image.shape[:2]
+    bg_image = cv2.resize(background,(width, height))
+
+    result = merge_images(bg_image, image, mask)
+    return result
 
 def vignetteEffect(image, Xside, Xcenter, Yside, Ycenter):
     """ 이미지에 조명효과를 부여
@@ -56,7 +69,8 @@ def textureEffect(image, texture, strength=0.5):
     if len(texture.shape) == 3:
         texture = cv2.cvtColor(texture, cv2.COLOR_RGB2GRAY)
 
-    texture = cv2.resize(texture,image.shape[:2])
+    height, width = image.shape[:2]
+    texture = cv2.resize(texture,(width, height))
     rgb, alpha = image[:,:,:3], image[:,:,3:]
 
     blank = np.zeros_like(texture, dtype=np.float)
