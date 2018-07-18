@@ -52,6 +52,10 @@ class TestToneProcessing(unittest.TestCase):
     3) customTone  --  주어진 Look-Up-Table을 이용하여 변경
         * test_customTone_sepia   : sepia.lut을 적용
 
+    4) saturationAdjust -- Saturation 값을 변경하여 색의 선명함 변경
+        * test_saturationAdjust_with_g_06 : gamma = 0.6 을 적용
+        * test_saturationAdjust_with_g_15 : gamma = 1.5 을 적용
+
     """
     def setUp(self):
         """ the testing framework will automatically
@@ -112,6 +116,28 @@ class TestToneProcessing(unittest.TestCase):
                               "the shape of input and output should be same")
         # load correct answer
         testpath = os.path.join(tone_dir,"test_customTone_sepia.png")
+        correct = read_image(testpath)
+
+        mse = MSE(correct, result)
+        self.assertGreaterEqual(mse, 1.)
+
+    def test_saturationAdjust_with_g_06(self):
+        result = saturationAdjust(self.image,0.6)
+        self.assertTupleEqual(self.image.shape, result.shape,
+                              "the shape of input and output should be same")
+        # load correct answer
+        testpath = os.path.join(tone_dir,"test_saturationAdjust_with_g_06.png")
+        correct = read_image(testpath)
+
+        mse = MSE(correct, result)
+        self.assertGreaterEqual(mse, 1.)
+
+    def test_saturationAdjust_with_g_15(self):
+        result = saturationAdjust(self.image,1.5)
+        self.assertTupleEqual(self.image.shape, result.shape,
+                              "the shape of input and output should be same")
+        # load correct answer
+        testpath = os.path.join(tone_dir,"test_saturationAdjust_with_g_15.png")
         correct = read_image(testpath)
 
         mse = MSE(correct, result)
