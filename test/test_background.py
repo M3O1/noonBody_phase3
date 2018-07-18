@@ -86,7 +86,7 @@ class TestBackGroundProcessing(unittest.TestCase):
         correct = read_image(testpath)
 
         mse = MSE(correct, result)
-        self.assertGreaterEqual(mse, 1.)
+        self.assertLessEqual(mse, 10)
 
     def test_mergeBackgrounds_with_canvas(self):
         backround = read_image(os.path.join(texture_dir,'canvas.jpg'))
@@ -100,7 +100,7 @@ class TestBackGroundProcessing(unittest.TestCase):
         correct = read_image(testpath)
 
         mse = MSE(correct, result)
-        self.assertGreaterEqual(mse, 1.)
+        self.assertLessEqual(mse, 10)
 
     def test_vignetteEffect_with_center_emphasized(self):
         result = vignetteEffect(self.image,0.8,1.2,0.8,1.2)
@@ -112,7 +112,7 @@ class TestBackGroundProcessing(unittest.TestCase):
         correct = read_image(testpath)
 
         mse = MSE(correct, result)
-        self.assertGreaterEqual(mse, 1.)
+        self.assertLessEqual(mse, 10)
 
     def test_vignetteEffect_with_side_emphasized(self):
         result = vignetteEffect(self.image,1.2,0.8,1.2,0.8)
@@ -124,7 +124,7 @@ class TestBackGroundProcessing(unittest.TestCase):
         correct = read_image(testpath)
 
         mse = MSE(correct, result)
-        self.assertGreaterEqual(mse, 1.)
+        self.assertLessEqual(mse, 10)
 
     def test_textureEffect_with_cemento_str_05(self):
         texture = read_profile(os.path.join(texture_dir,"cemento.jpg"))
@@ -138,7 +138,7 @@ class TestBackGroundProcessing(unittest.TestCase):
         correct = read_image(testpath)
 
         mse = MSE(correct, result)
-        self.assertGreaterEqual(mse, 1.)
+        self.assertLessEqual(mse, 10)
 
     def test_textureEffect_with_canvas_str_05(self):
         texture = read_profile(os.path.join(texture_dir,"canvas.jpg"))
@@ -152,7 +152,7 @@ class TestBackGroundProcessing(unittest.TestCase):
         correct = read_image(testpath)
 
         mse = MSE(correct, result)
-        self.assertGreaterEqual(mse, 1.)
+        self.assertLessEqual(mse, 10)
 
     def test_textureEffect_with_cemento_str_12(self):
         texture = read_profile(os.path.join(texture_dir,"cemento.jpg"))
@@ -166,7 +166,7 @@ class TestBackGroundProcessing(unittest.TestCase):
         correct = read_image(testpath)
 
         mse = MSE(correct, result)
-        self.assertGreaterEqual(mse, 1.)
+        self.assertLessEqual(mse, 10)
 
     def test_textureEffect_with_canvas_str_12(self):
         texture = read_profile(os.path.join(texture_dir,"canvas.jpg"))
@@ -180,7 +180,7 @@ class TestBackGroundProcessing(unittest.TestCase):
         correct = read_image(testpath)
 
         mse = MSE(correct, result)
-        self.assertGreaterEqual(mse, 1.)
+        self.assertLessEqual(mse, 10)
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

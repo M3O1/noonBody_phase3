@@ -90,7 +90,7 @@ class TestContrastProcessing(unittest.TestCase):
         correct = read_image(testpath)
 
         mse = MSE(correct, result)
-        self.assertGreaterEqual(mse, 1.)
+        self.assertLessEqual(mse, 10)
 
     def test_claheContrast_with_clip_2_grid_19(self):
         result = claheContrast(self.image,2,19)
@@ -101,7 +101,7 @@ class TestContrastProcessing(unittest.TestCase):
         correct = read_image(testpath)
 
         mse = MSE(correct, result)
-        self.assertGreaterEqual(mse, 1.)
+        self.assertLessEqual(mse, 10)
 
     def test_claheContrast_with_clip_4_grid_11(self):
         result = claheContrast(self.image,4,11)
@@ -112,7 +112,7 @@ class TestContrastProcessing(unittest.TestCase):
         correct = read_image(testpath)
 
         mse = MSE(correct, result)
-        self.assertGreaterEqual(mse, 1.)
+        self.assertLessEqual(mse, 10)
 
     def test_claheContrast_with_clip_4_grid_19(self):
         result = claheContrast(self.image,4,19)
@@ -123,7 +123,7 @@ class TestContrastProcessing(unittest.TestCase):
         correct = read_image(testpath)
 
         mse = MSE(correct, result)
-        self.assertGreaterEqual(mse, 1.)
+        self.assertLessEqual(mse, 10)
 
     def test_sharpening_with_sharpness_03(self):
         result = sharpening(self.image, 0.3)
@@ -134,7 +134,7 @@ class TestContrastProcessing(unittest.TestCase):
         correct = read_image(testpath)
 
         mse = MSE(correct, result)
-        self.assertGreaterEqual(mse, 1.)
+        self.assertLessEqual(mse, 10)
 
     def test_sharpening_with_sharpness_10(self):
         result = sharpening(self.image, 1.)
@@ -145,7 +145,7 @@ class TestContrastProcessing(unittest.TestCase):
         correct = read_image(testpath)
 
         mse = MSE(correct, result)
-        self.assertGreaterEqual(mse, 1.)
+        self.assertLessEqual(mse, 10)
 
     def test_sharpening_with_sharpness_15(self):
         result = sharpening(self.image, 1.5)
@@ -156,7 +156,7 @@ class TestContrastProcessing(unittest.TestCase):
         correct = read_image(testpath)
 
         mse = MSE(correct, result)
-        self.assertGreaterEqual(mse, 1.)
+        self.assertLessEqual(mse, 10)
 
     def test_gammaContrast_with_g_08(self):
         result = gammaContrast(self.image,0.8)
@@ -167,7 +167,7 @@ class TestContrastProcessing(unittest.TestCase):
         correct = read_image(testpath)
 
         mse = MSE(correct, result)
-        self.assertGreaterEqual(mse, 1.)
+        self.assertLessEqual(mse, 10)
 
     def test_gammaContrast_with_g_10(self):
         result = gammaContrast(self.image,1.)
@@ -178,7 +178,7 @@ class TestContrastProcessing(unittest.TestCase):
         correct = read_image(testpath)
 
         mse = MSE(correct, result)
-        self.assertGreaterEqual(mse, 1.)
+        self.assertLessEqual(mse, 10)
 
     def test_gammaContrast_with_g_12(self):
         result = gammaContrast(self.image, 1.2)
@@ -189,7 +189,7 @@ class TestContrastProcessing(unittest.TestCase):
         correct = read_image(testpath)
 
         mse = MSE(correct, result)
-        self.assertGreaterEqual(mse, 1.)
+        self.assertLessEqual(mse, 10)
 
     def test_autoGammaContrast_with_60(self):
         result = autoGammaContrast(self.image,self.profile,60)
@@ -200,7 +200,7 @@ class TestContrastProcessing(unittest.TestCase):
         correct = read_image(testpath)
 
         mse = MSE(correct, result)
-        self.assertGreaterEqual(mse, 1.)
+        self.assertLessEqual(mse, 10)
 
     def test_autoGammaContrast_with_80(self):
         result = autoGammaContrast(self.image,self.profile,80)
@@ -211,7 +211,7 @@ class TestContrastProcessing(unittest.TestCase):
         correct = read_image(testpath)
 
         mse = MSE(correct, result)
-        self.assertGreaterEqual(mse, 1.)
+        self.assertLessEqual(mse, 10)
 
     def test_autoGammaContrast_with_100(self):
         result = autoGammaContrast(self.image,self.profile,100)
@@ -222,7 +222,7 @@ class TestContrastProcessing(unittest.TestCase):
         correct = read_image(testpath)
 
         mse = MSE(correct, result)
-        self.assertGreaterEqual(mse, 1.)
+        self.assertLessEqual(mse, 10)
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

@@ -83,7 +83,7 @@ class TestToneProcessing(unittest.TestCase):
         correct = read_image(testpath)
 
         mse = MSE(correct, result)
-        self.assertGreaterEqual(mse, 1.)
+        self.assertLessEqual(mse, 10)
 
     def test_colorTone_gamma_blue_up(self):
         result = colorTone(self.image, 0.8,1.0,1.2)
@@ -94,7 +94,7 @@ class TestToneProcessing(unittest.TestCase):
         correct = read_image(testpath)
 
         mse = MSE(correct, result)
-        self.assertGreaterEqual(mse, 1.)
+        self.assertLessEqual(mse, 10)
 
     def test_monoTone(self):
         result = monoTone(self.image)
@@ -105,7 +105,7 @@ class TestToneProcessing(unittest.TestCase):
         correct = read_image(testpath)
 
         mse = MSE(correct, result)
-        self.assertGreaterEqual(mse, 1.)
+        self.assertLessEqual(mse, 10)
 
     def test_customTone_sepia(self):
         lut_path = os.path.join(lut_dir,"sepia.lut")
@@ -119,7 +119,7 @@ class TestToneProcessing(unittest.TestCase):
         correct = read_image(testpath)
 
         mse = MSE(correct, result)
-        self.assertGreaterEqual(mse, 1.)
+        self.assertLessEqual(mse, 10)
 
     def test_saturationAdjust_with_g_06(self):
         result = saturationAdjust(self.image,0.6)
@@ -130,7 +130,7 @@ class TestToneProcessing(unittest.TestCase):
         correct = read_image(testpath)
 
         mse = MSE(correct, result)
-        self.assertGreaterEqual(mse, 1.)
+        self.assertLessEqual(mse, 10)
 
     def test_saturationAdjust_with_g_15(self):
         result = saturationAdjust(self.image,1.5)
@@ -141,7 +141,7 @@ class TestToneProcessing(unittest.TestCase):
         correct = read_image(testpath)
 
         mse = MSE(correct, result)
-        self.assertGreaterEqual(mse, 1.)
+        self.assertLessEqual(mse, 10)
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

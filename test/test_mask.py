@@ -173,7 +173,8 @@ class TestMaskProcessing(unittest.TestCase):
         correct = read_image(testpath)
 
         mse = MSE(correct, result)
-        self.assertGreaterEqual(mse, 1)
+
+        self.assertLessEqual(mse, 10)
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

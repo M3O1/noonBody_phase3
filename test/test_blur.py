@@ -90,7 +90,7 @@ class TestBlurProcessing(unittest.TestCase):
         correct = read_image(testpath)
 
         mse = MSE(correct, result)
-        self.assertGreaterEqual(mse, 1.)
+        self.assertLessEqual(mse, 10)
 
     def test_avgBlur_ksize_19(self):
         result = avgBlur(self.image, 19)
@@ -102,7 +102,7 @@ class TestBlurProcessing(unittest.TestCase):
         correct = read_image(testpath)
 
         mse = MSE(correct, result)
-        self.assertGreaterEqual(mse, 1.)
+        self.assertLessEqual(mse, 10)
 
     def test_normBlur_ksize_11_sigma_0(self):
         result = normBlur(self.image, 11, 0)
@@ -114,7 +114,7 @@ class TestBlurProcessing(unittest.TestCase):
         correct = read_image(testpath)
 
         mse = MSE(correct, result)
-        self.assertGreaterEqual(mse, 1.)
+        self.assertLessEqual(mse, 10)
 
     def test_normBlur_ksize_19_sigma_0(self):
         result = normBlur(self.image, 19, 0)
@@ -126,7 +126,7 @@ class TestBlurProcessing(unittest.TestCase):
         correct = read_image(testpath)
 
         mse = MSE(correct, result)
-        self.assertGreaterEqual(mse, 1.)
+        self.assertLessEqual(mse, 10)
 
     def test_normBlur_ksize_19_sigma_5(self):
         result = normBlur(self.image, 19, 5)
@@ -138,7 +138,7 @@ class TestBlurProcessing(unittest.TestCase):
         correct = read_image(testpath)
 
         mse = MSE(correct, result)
-        self.assertGreaterEqual(mse, 1.)
+        self.assertLessEqual(mse, 10)
 
     def test_medianBlur_ksize_11(self):
         result = medianBlur(self.image, 11)
@@ -150,7 +150,7 @@ class TestBlurProcessing(unittest.TestCase):
         correct = read_image(testpath)
 
         mse = MSE(correct, result)
-        self.assertGreaterEqual(mse, 1.)
+        self.assertLessEqual(mse, 10)
 
     def test_medianBlur_ksize_19(self):
         result = medianBlur(self.image, 19)
@@ -162,7 +162,7 @@ class TestBlurProcessing(unittest.TestCase):
         correct = read_image(testpath)
 
         mse = MSE(correct, result)
-        self.assertGreaterEqual(mse, 1.)
+        self.assertLessEqual(mse, 10)
 
     def test_bltBlur_sigma_25(self):
         result = bltBlur(self.image, sigmaColor=25, sigmaSpace=25)
@@ -174,7 +174,7 @@ class TestBlurProcessing(unittest.TestCase):
         correct = read_image(testpath)
 
         mse = MSE(correct, result)
-        self.assertGreaterEqual(mse, 1.)
+        self.assertLessEqual(mse, 10)
 
     def test_bltBlur_sigma_75(self):
         result = bltBlur(self.image, sigmaColor=75, sigmaSpace=75)
@@ -186,7 +186,7 @@ class TestBlurProcessing(unittest.TestCase):
         correct = read_image(testpath)
 
         mse = MSE(correct, result)
-        self.assertGreaterEqual(mse, 1.)
+        self.assertLessEqual(mse, 10)
 
     def test_normBlur_with_reversed_mask(self):
         blurred = normBlur(self.image, ksize=11)
@@ -200,7 +200,7 @@ class TestBlurProcessing(unittest.TestCase):
         correct = read_image(testpath)
 
         mse = MSE(correct, result)
-        self.assertGreaterEqual(mse, 1.)
+        self.assertLessEqual(mse, 10)
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
