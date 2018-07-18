@@ -64,6 +64,18 @@ def gammaContrast(image, gamma=0.8):
     result = np.concatenate([applied, alpha],axis=-1)
     return result
 
+def autoGammaContrast(image, profile, thr=80):
+    """ 영상 내 인물 부분의 평균 밝기에 따라 GammaContrast를 보정
+
+    Keyword arguments:
+    profile -- 영상 내 인물 부분
+    thr     -- 목표 보정 수치. 작을수록 어두워지고, 커질수록 밝아짐
+    """
+    mean_value = get_brightness(image, profile)
+    gamma = float(thr) / mean_value
+    result = gammaContrast(image, gamma)
+    return result
+
 def get_brightness(image, mask):
     """ 이미지의 mask 영역 내 평균 밝기값을 return
     """
