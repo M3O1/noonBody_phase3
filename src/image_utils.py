@@ -1,4 +1,5 @@
 import numpy as np
+import pandas as pd
 import cv2
 
 def read_image(image_path):
@@ -19,6 +20,24 @@ def read_profile(profile_path):
     """
     profile = cv2.imread(profile_path,0)
     return profile
+
+def read_lut(lut_path):
+    """ Read Look-Up-Table in RGB format
+    the example of lut file format is
+    | index | Red | Green | Blue  |
+    | ----- | --- | ----- | ----- |
+    |  0    | 0   |   0   |    0  |
+    |  1    | 15  |  15   |  15   |
+    |  2    | 33  |  33   |  33   |
+    | ...   | ... |  ...  | ....  |
+    | 255   | 255 |  255  |  255  |
+
+    Keyword arguments:
+    lut_path -- the path of .lut extesion file to read
+    """
+    lut_df = pd.read_csv(lut_path,index_col=0)
+    lut = lut_df.values.astype(np.uint8)
+    return lut
 
 def write_image(image, image_path):
     """ Write image file in 32bit format(BGRA)

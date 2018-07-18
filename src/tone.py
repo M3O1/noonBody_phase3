@@ -28,6 +28,7 @@ def colorTone(image, r_gamma=1.0, g_gamma=1.0, b_gamma=1.0):
     result = np.concatenate([applied, alpha],axis=-1)
     return result
 
+
 def monoTone(image):
     """ 이미지를 흑백(mono)로 변경
     """
@@ -37,4 +38,20 @@ def monoTone(image):
     applied = cv2.cvtColor(gray, cv2.COLOR_GRAY2RGB)
 
     result = np.concatenate([applied,alpha],axis=-1)
+    return result
+
+def customTone(image, lut):
+    """ 이미지에 Custom된 Look-Up-Table을 적용
+
+    Keyword arguments:
+    lut -- Red에 해당하는 arg, 1.0을 기준으로 클수록 강조됨.
+    """
+    rgb, alpha = image[:,:,:3], image[:,:,3:]
+
+    r_channel = cv2.LUT(rgb[:,:,0], lut[:,0])
+    g_channel = cv2.LUT(rgb[:,:,1], lut[:,1])
+    b_channel = cv2.LUT(rgb[:,:,2], lut[:,2])
+    applied =  np.stack([r_channel,g_channel,b_channel],axis=-1)
+
+    result = np.concatenate([applied, alpha],axis=-1)
     return result
