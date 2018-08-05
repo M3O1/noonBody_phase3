@@ -70,6 +70,7 @@ def reduce_mask(profile, width=1):
     """
     kernel = np.ones((3,3), np.uint8)
     mask = cv2.erode(profile, kernel, iterations=width)
+    mask = (mask>10).astype(np.uint8)*254
     return mask
 
 def expand_mask(profile, width=1):
@@ -80,6 +81,7 @@ def expand_mask(profile, width=1):
     """
     kernel = np.ones((3,3), np.uint8)
     mask = cv2.dilate(profile, kernel, iterations=width)
+    mask = (mask>10).astype(np.uint8)*255
     return mask
 
 def reverse_mask(mask):
